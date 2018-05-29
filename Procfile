@@ -1,2 +1,2 @@
-web: gunicorn djorg_punit.wsgi
+web: gunicorn djorg.wsgi
 
