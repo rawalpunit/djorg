@@ -36,12 +36,16 @@ DATABASES = {
 
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'bookmarks',
+    'notes',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -123,6 +127,7 @@ USE_I18N = True
 
 USE_L10N = True
 
+
 USE_TZ = True
 
 
@@ -130,3 +135,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Django REST framework
+REST_FRAMEWORK = {
+    # Use Django's std django.contib.auth permission,
+    # or allow read-only access for aunauthenticated users
+    'DEFAULT_PERMISSION_CLASSES' : ['rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly']
+}
