@@ -1,2 +1,2 @@
-web: gunicorn djorg-punit.wsgi
+gunicorn djorg-punit.wsgi --log-file -
 
