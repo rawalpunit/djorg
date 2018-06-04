@@ -45,6 +45,8 @@ STATIC_URL = '/static/'
 INSTALLED_APPS = [
     'bookmarks',
     'notes',
+    # 'pipeline',
+    'corsheaders',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -55,9 +57,12 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -142,3 +147,9 @@ REST_FRAMEWORK = {
     # or allow read-only access for aunauthenticated users
     'DEFAULT_PERMISSION_CLASSES' : ['rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly']
 }
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+# CORS_ORIGIN_WHITELIST = (
+#     '<YOUR_DOMAIN>[:PORT]',
+# )
