@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'bookmarks',
     'notes',
     'corsheaders',
+    'graphene_django',
     'rest_framework',
     'rest_framework.authtoken',
     'django.contrib.admin',
