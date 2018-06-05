@@ -1,0 +1,41 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'bookmarks/style.css' %}" />
+
+<div class="Title">
+  <h1>Notes</h1>
+</div>
+
+<div class="Site-Container">
+  {% if notes %}
+  <h3>Hello {{request.user}}! Here are your notes</h3>
+  <div class="Notes-All">
+    {% for note in notes %}
+    <div class="Note-Container">
+      <h3 class="Note-Title">{{note.title}}</h3>
+      <p class="Note-Content">{{note.content}}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% else %}
+  Your have no notes
+  {% endif %}
+
+  <div class="Add-Note">
+    <h3>Add a new note:</h3>
+    <form method="POST" class="note-form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+  </div>
+
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/bookmarks">Bookmarks</a></li>
+    <li><a href="/admin">Admin Login</a></li>
+  </ul>
+
+
+</div>

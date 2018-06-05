@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
 ]
 
@@ -156,6 +157,11 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ),
+}
+
+# Graphene
+GRAPHENE = {
+    'SCHEMA': 'notes.schema.schema'  # dir.filename.varname
 }
 
 CORS_ORIGIN_ALLOW_ALL = True

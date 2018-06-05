@@ -30,6 +30,6 @@ urlpatterns = [
     path("", TemplateView.as_view(template_name='djorg_base.html')),
     path('bookmarks/', include('bookmarks.urls')),
     path('admin/', admin.site.urls),
-    path('graphql', GraphQLView.as_view(graphiql=True)),
+    path('graphql/', GraphQLView.as_view(graphiql=True)),
     re_path(r'^api-token-auth/', views.obtain_auth_token)
 ]
