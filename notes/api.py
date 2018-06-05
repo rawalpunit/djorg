@@ -24,6 +24,6 @@ class NoteViewSet(viewsets.ModelViewSet):
         # import pdb; pdb.set_trace()
 
         if user.is_anonymous:
-            return Note.objects.all()
+            return Note.objects.none()
         else:
             return Note.objects.filter(user=user)

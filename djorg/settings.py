@@ -45,9 +45,9 @@ STATIC_URL = '/static/'
 INSTALLED_APPS = [
     'bookmarks',
     'notes',
-    # 'pipeline',
     'corsheaders',
     'rest_framework',
+    'rest_framework.authtoken',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -141,11 +141,21 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+
 # Django REST framework
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication # this has to be after the SECRET_KEY
+
 REST_FRAMEWORK = {
     # Use Django's std django.contib.auth permission,
     # or allow read-only access for aunauthenticated users
-    'DEFAULT_PERMISSION_CLASSES' : ['rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly']
+    'DEFAULT_PERMISSION_CLASSES' : ['rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'],
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
